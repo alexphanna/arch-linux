@@ -100,3 +100,9 @@ make clean
 sudo make install
 echo "exec dwm" > ~/.xinitrc
 ```
+### List of applications
+#### Steam
+```sh
+ln -sf ../run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+sudo pacman -S steam
+```
