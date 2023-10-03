@@ -16,14 +16,6 @@ mkfs.fat -F 32 /dev/efi_system_partition
 mount /dev/root_partition /mnt
 mount --mkdir /dev/efi_system_partition /mnt/boot
 ```
-### Swap file creation
-```sh
-dd if=/dev/zero of=/swapfile bs=1M count=8k status=progress
-chmod 0600 /swapfile
-mkswap -U clear /swapfile
-swapon /swapfile
-echo "/swapfile none swap defaults 0 0" >> /etc/fstab
-```
 ## Installation
 ### Install essential packages
 ```sh
@@ -37,6 +29,14 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ### Chroot
 ```sh
 arch-chroot /mnt
+```
+### Swap file creation
+```sh
+dd if=/dev/zero of=/swapfile bs=1M count=8k status=progress
+chmod 0600 /swapfile
+mkswap -U clear /swapfile
+swapon /swapfile
+echo "/swapfile none swap defaults 0 0" >> /etc/fstab
 ```
 ### Time zone
 ```sh
